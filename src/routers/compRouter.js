@@ -1,24 +1,9 @@
 const express = require("express");
-const { getComp} = require("../controllers/comp");
-//const {bodyValidation} = require('../middleware/middleware')
+const { getCompById,getCompBySector} = require("../controllers/comp");
 
 const compRouter = express.Router();
 
-compRouter.get("/", getComp);
-
-// //taskRouter.get('/done', doneTasks);
-
-// taskRouter.get('/:id', getTask);
-
-// taskRouter.post('/',bodyValidation,postTask);
-
-// taskRouter.put('/:id', checkTask);
-
-// taskRouter.delete('/', deleteDoneTasks);
-
-// router.route("/")
-//     .get(taskController.getAllTasks)
-//     .post(createTaskValidation, taskController.createTask)
-//     .delete(taskController.deleteFinishedTasks);
+compRouter.get("/{id}", getCompById);
+compRouter.get("/sector?name={sectorName}", getCompBySector);
 
 module.exports = compRouter;
