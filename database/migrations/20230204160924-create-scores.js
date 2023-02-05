@@ -2,17 +2,23 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('companySects', {
+    await queryInterface.createTable('Scores', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      compId: {
+      companyId: {
         type: Sequelize.STRING
       },
-      compSect: {
+      name: {
+        type: Sequelize.STRING
+      },
+      score: {
+        type: Sequelize.FLOAT
+      },
+      sector: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -26,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('companySects');
+    await queryInterface.dropTable('Scores');
   }
 };
