@@ -1,10 +1,10 @@
 const express = require("express");
 const { saveCompInfo} = require("../controllers/saveCompInfo");
-const {Company, Scores} = require('../../database/models');
+const {urlValidation} = require('../middleware/validation')
 
 const saveCompInfoRouter = express.Router();
 
-saveCompInfoRouter.post("/", saveCompInfo)
+saveCompInfoRouter.post("/", urlValidation,saveCompInfo)
 // saveCompInfoRouter.get("/", async function (res,req){
 //     const result = await Company.findAll(
 //         {

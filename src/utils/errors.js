@@ -6,7 +6,15 @@ class HTTPError extends Error {
     }
 }
 
+class InvalidInputError extends Error{
+    constructor(message, code){
+        super(message);
+        this.message = message;
+        this.code = code;
+    }
+}
   
 module.exports = {
-    HTTPError
+    HTTPError,
+    InvalidInputError
 };
