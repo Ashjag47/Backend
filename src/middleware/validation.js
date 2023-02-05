@@ -1,15 +1,16 @@
 const Joi = require('joi');
 const { InvalidInputError } = require('../utils/errors');
 
+const urlSchema = Joi.object({
+    urlLink: Joi.string()
+        .uri()
+        .required()
+});
+
 const urlValidation = (req, res, next)=>{
     try{
-        const schema = Joi.object({
-            urlLink: Joi.string()
-                .uri()
-                .required()
-        });
         const {body} = req;
-        const {error} = schema.validate(body);
+        const {error} = urlSchema.validate(body);
         if(error){
             throw new InvalidInputError(error.message, 400);
         }
@@ -18,11 +19,11 @@ const urlValidation = (req, res, next)=>{
         if(err instanceof InvalidInputError){
             res.status(err.code).json({message: err.message});
         }else{
-            res.status(500).json({message: 'Something went wrong.'});
+            res.status(500).json({message: err.message});
         }
     }
 };
 
 module.exports = {
-    urlValidation,
+    urlValidation, urlSchema
 };
