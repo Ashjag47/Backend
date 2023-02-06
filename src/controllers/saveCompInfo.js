@@ -1,5 +1,5 @@
 const {saveCompInfoService} = require("../service/saveCompInfo");
-const {HTTPError} = require('../utils/errors');
+const {HTTPError} = require("../utils/errors");
 
 const saveCompInfo = async(req, res) => {
 	console.log("POST api/save controller is called");
